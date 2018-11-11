@@ -36,9 +36,9 @@ public class RNInstaCaptureModuleModule extends ReactContextBaseJavaModule {
 
   private WritableArray getList() {
     WritableArray listArr = Arguments.createArray();
-    listArr.pushString('react-native-fbsdk');
-    listArr.pushString('react-native-camera');
-    listArr.pushString('react-native-map');
+    listArr.pushString("Halim is here");
+    listArr.pushString("react-native-camera");
+    listArr.pushString("react-native-map");
 
     return listArr;
   }
