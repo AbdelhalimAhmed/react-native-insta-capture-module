@@ -42,4 +42,38 @@ public class RNInstaCaptureModuleModule extends ReactContextBaseJavaModule {
 
     return listArr;
   }
+
+  protected void showAlertDialog() {
+    AlertDialogFragment.newInstance(R.string.dialog_title, R.string.dialog_message)
+            .show(getSupportFragmentManager(), "dialogFragment");
+}
+
+protected void captureScreenshot(@Nullable View... ignoredViews) {
+
+    Instacapture.capture(this, new SimpleScreenCapturingListener() {
+        @Override
+        public void onCaptureComplete(Bitmap bitmap) {
+
+            Utility.getScreenshotFileObservable(BaseSampleActivity.this, bitmap)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<File>() {
+                        @Override
+                        public void call(File file) {
+
+                            startActivity(ShowScreenShotActivity.buildIntent(BaseSampleActivity.this,
+                                    file.getAbsolutePath()));
+                        }
+                    });
+        }
+    }, ignoredViews);
+
+
+    Instacapture.captureRx(this, ignoredViews).subscribe(new Action1<Bitmap>() {
+        @Override
+        public void call(Bitmap bitmap) {
+
+        }
+    });
+
+}
 }
