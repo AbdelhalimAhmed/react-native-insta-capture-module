@@ -15,7 +15,6 @@ import com.tarek360.instacapture.listener.SimpleScreenCapturingListener;
 
 import java.io.ByteArrayOutputStream;
 
-import rx.functions.Action1;
 
 public class RNInstaCaptureModuleModule extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
@@ -54,12 +53,6 @@ public class RNInstaCaptureModuleModule extends ReactContextBaseJavaModule {
         }, null);
 
 
-        Instacapture.captureRx(currentActivity, null).subscribe(new Action1<Bitmap>() {
-            @Override
-            public void call(Bitmap bitmap) {
-
-            }
-        });
 
 
     }
